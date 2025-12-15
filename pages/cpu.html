@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Assembly Course</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="screen">
+
+<pre class="ascii-title">
+██╗  ██╗ ██████╗ ██╗    ██╗     ██████╗██████╗ ██╗   ██╗      ██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗███████╗
+██║  ██║██╔═══██╗██║    ██║    ██╔════╝██╔══██╗██║   ██║      ██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝██╔════╝
+███████║██║   ██║██║ █╗ ██║    ██║     ██████╔╝██║   ██║      ██║ █╗ ██║██║   ██║██████╔╝█████╔╝ ███████╗
+██╔══██║██║   ██║██║███╗██║    ██║     ██╔═══╝ ██║   ██       ██║███╗██║██║   ██║██╔══██╗██╔═██╗ ╚════██║
+██║  ██║╚██████╔╝╚███╔███╔╝    ╚██████╗██║     ╚██████╝       ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗███████║
+╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝      ╚═════╝╚═╝      ╚════╝         ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
+
+</pre>
+
+<pre>
+
+Before we dive into writing instructions for the CPU, let’s take a moment to understand how it all works.
+Since 1945, computers have been built on the Von Neumann Architecture, which looks like this:
+
+<pre class="ascii-title">
++-------+        +-----+        +--------+
+|       |        |     |        |        |
+| Input |<------>| CPU |<------>| Output |
+|       |        |     |        |        |
++-------+        +-----+        +--------+
+                    ^
+                    ▓
+                    ▓
+                    ▓
+                    V
+                 +-----+
+                 |     |
+                 |     |
+                 |     |
+                 | RAM |
+                 |     |
+                 |     |
+                 |     |
+                 +-----+
+</pre>
+As you can see, it’s really quite straightforward, we just break everything down into smaller pieces.
+Before the Von Neumann architecture came along, everything was a single, massive unit.
+So, if you wanted to run another program, you had to rebuild the whole thing from scratch.
+Now that we’ve split things up, we can make the most of the CPU and use it as much as we need.
+
+Now let's look to how our CPU looks like inside:
+
+<pre class="ascii-title">
+                    2 Core CPU
++-----------------------------------------------+
+|                                               |
+|   +------------------------+   +----------+   |
+|   |    Registers    | | CU |   |          |   |
+|   |------------------ -----|   |          |   |
+|   |------------------ -----|   |          |   |
+|   |    L1 Cache     | | AU |   |          |   |
+|   +------------------------+   |          |   |
+|                                | L2 Cache |   |
+|   +------------------------+   |          |   |
+|   |    Registers    | | CU |   |          |   |
+|   |------------------ -----|   |          |   |
+|   |------------------ -----|   |          |   |
+|   |    L1 Cache     | | AU |   |          |   |
+|   +------------------------+   +----------+   |
+|                                               |
++-----------------------------------------------+
+</pre>
+Sure, I’ve simplified a few things, but generally, a CPU looks something like this.
+It consists of cores, which include registers, cache, a Control Unit (CU), and an Arithmetic Unit (AU).
+Everything is linked through the L2 cache.
+
+* Registers are small but incredibly fast memory units. In x86-64 architecture, we can store 64-bit numbers.
+* L1 Cache is another type of memory that’s slower than registers but it's bigger. We don’t have direct access to it.
+* The Control Unit is in charge of executing instructions.
+* The Arithmetic Logic Unit handles all the arithmetic operations.
+* L2 Cache serves the core pairs. It's biggger than L1 Cache but slower.
+</pre>
+
+<pre class="footer">
+────────────────────────────────────
+• No JavaScript •
+────────────────────────────────────
+</pre>
+
+</div>
+
+</body>
+</html>
+

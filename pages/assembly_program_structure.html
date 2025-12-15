@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Assembly Course</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="screen">
+
+<pre class="ascii-title">
+ █████╗ ███████╗███████╗███████╗███╗   ███╗██████╗ ██╗  ██╗   ██╗
+██╔══██╗██╔════╝██╔════╝██╔════╝████╗ ████║██╔══██╗██║  ╚██╗ ██╔╝
+███████║███████╗███████╗█████╗  ██╔████╔██║██████╔╝██║   ╚████╔╝
+██╔══██║╚════██║╚════██║██╔══╝  ██║╚██╔╝██║██╔══██╗██║    ╚██╔╝
+██║  ██║███████║███████║███████╗██║ ╚═╝ ██║██████╔╝███████╗██║
+╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝     ╚═╝╚═════╝ ╚══════╝╚═╝
+</pre>
+<pre class="ascii-title">
+██████╗ ██████╗  ██████╗  ██████╗ ██████╗  █████╗ ███╗   ███╗
+██╔══██╗██╔══██╗██╔═══██╗██╔════╝ ██╔══██╗██╔══██╗████╗ ████║
+██████╔╝██████╔╝██║   ██║██║  ███╗██████╔╝███████║██╔████╔██║
+██╔═══╝ ██╔══██╗██║   ██║██║   ██║██╔══██╗██╔══██║██║╚██╔╝██║
+██║     ██║  ██║╚██████╔╝╚██████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║
+╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝
+</pre>
+<pre class="ascii-title">
+███████╗████████╗██████╗ ██╗   ██╗ ██████╗████████╗██╗   ██╗██████╗ ███████╗
+██╔════╝╚══██╔══╝██╔══██╗██║   ██║██╔════╝╚══██╔══╝██║   ██║██╔══██╗██╔════╝
+███████╗   ██║   ██████╔╝██║   ██║██║        ██║   ██║   ██║██████╔╝█████╗
+╚════██║   ██║   ██╔══██╗██║   ██║██║        ██║   ██║   ██║██╔══██╗██╔══╝
+███████║   ██║   ██║  ██║╚██████╔╝╚██████╗   ██║   ╚██████╔╝██║  ██║███████╗
+╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝  ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝
+</pre>
+
+
+<pre>
+In assembly language, we have these things called sections a.k.a segments, which are special areas designated for storing our data.
+
+.text for the code
+.data for initialized data
+.bss for uninitialized data
+.rodata for read-only data
+
+The reason we separate these sections is to keep our code organized and to inform the operating system about the permissions needed to load our code into memory.
+Technically, you could write code without using sections and store variables in the .text section, but that would make your code a bit of a mess. So, I really recommend using them, unless you're not concerned about optimizing the size of your binary file.
+
+In each section, we can also use labels to separate code. Labels essentially point to a specific line in your code, they don’t isolate anything.
+For example:
+
+<pre class="code">
+global    _start
+
+section   .text
+_start:
+  mov       rax, 1
+label1:
+  mov       rdi, 1
+  mov       rsi, message
+lable2:
+  mov       rdx, 13
+  syscall
+  mov       rax, 60
+  xor       rdi, rdi
+  syscall
+
+section   .data
+message:  db        "Hello, World", 10 
+</pre>
+
+Our program will work in the same way, lables it's just high level representation of the address of a specific line in our code.
+</pre>
+<pre class="footer">
+────────────────────────────────────
+• No JavaScript •
+────────────────────────────────────
+</pre>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Assembly Course</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="screen">
+
+<pre class="ascii-title">
+██████╗ ███████╗ ██████╗ ██╗███████╗████████╗███████╗██████╗ ███████╗
+██╔══██╗██╔════╝██╔════╝ ██║██╔════╝╚══██╔══╝██╔════╝██╔══██╗██╔════╝
+██████╔╝█████╗  ██║  ███╗██║███████╗   ██║   █████╗  ██████╔╝███████╗
+██╔══██╗██╔══╝  ██║   ██║██║╚════██║   ██║   ██╔══╝  ██╔══██╗╚════██║
+██║  ██║███████╗╚██████╔╝██║███████║   ██║   ███████╗██║  ██║███████║
+╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════╝
+</pre>
+
+
+<pre>
+As I mentioned in first chapter, each CPU core have registers to store data.
+
+<pre class="ascii-title">
+                                         General Purpose Registers
++---------------------------------------------------------------------------------------------------------+
+|  Name  |                                       Purpose                                                  |
+|---------------------------------------------------------------------------------------------------------|
+|  RAX   | Accumulator. Results of arithmetic operations are often stored in this register                |
+|---------------------------------------------------------------------------------------------------------|
+|  RBX   | Base. It is generally used for storing the addresses refrence of a memory                      |
+|---------------------------------------------------------------------------------------------------------|
+|  RCX   | Counter. Often used in counting operations such as loops, etc                                  |
+|---------------------------------------------------------------------------------------------------------|
+|  RDX   | Data. It often holds data for arithmetic operations, particularly multiplication and division  |
+|---------------------------------------------------------------------------------------------------------|
+|  RSI   | Source Index. It is frequently used as the source operand for string operations                |
+|---------------------------------------------------------------------------------------------------------|
+|  RDI   | Destination Index. Similar to RSI, it is used as the destination operand for string operations |
+|---------------------------------------------------------------------------------------------------------|
+|  RSP   | Stack pointer. It points to the top of the stack                                               |
+|---------------------------------------------------------------------------------------------------------|
+|  RBP   | The Base pointer. Points to the base of the current function's stack frame                     |
+|---------------------------------------------------------------------------------------------------------|
+| R8–R15 | 64-bit general-purpose registers. They were introduced in the 64-bit systems                   |
++---------------------------------------------------------------------------------------------------------+
+</pre>
+All this registers holds 64 bit numbers, but we can also get access to lower bits instead of accessing to all bits each time.
+<pre class="ascii-title">
+     64     |     32     |     16     |     8
+------------|------------|------------|----------
+    RAX     |    EAX     |     AX     |   AH/AL 
+------------|------------|------------|----------
+    RBX     |    EBX     |     BX     |   BH/BL
+------------|------------|------------|----------
+    RCX     |    ECX     |     CX     |   CH/CL
+------------|------------|------------|----------
+    RDX     |    EDX     |     DX     |   DH/DL
+------------|------------|------------|----------
+    RSI     |    ESI     |     SI     |    SIL
+------------|------------|------------|----------
+    RDI     |    EDI     |     DI     |    DIL
+------------|------------|------------|----------
+    RBP     |    EBP     |     BP     |    BPL
+------------|------------|------------|----------
+    RSP     |    ESP     |     SP     |    SPL
+------------|------------|------------|----------
+   R8-R15   |  R8D-R15D  |  R8W-R15W  |  R8B-R15B
+</pre>
+When you look at RAX, RBX, RCX, and RDX, you'll notice they each have two 8-bit partial registers: one for the higher bits and one for the lower bits.
+The higher register gives us access to the upper 8 bits of a 16-bit partial register, while the lower register, (surprise surprise), deals with the lower bits.
+Other registers gives us access only to lower 8 bits.
+These partial registers are great for optimizing both the size and speed of your programs, so make sure to take advantage of them whenever you can.
+
+IMPORTANT: When you accessing to partial registers, higher bits will be cleaned.
+
+Also we have RIP, Instruction Pointer, which is where the operating system keeps track of the next instruction address. There's a lot more to it, but for now, let's keep things straightforward and focus on the basics.
+</pre>
+
+<pre class="footer">
+────────────────────────────────────
+• No JavaScript •
+────────────────────────────────────
+</pre>
+
+</div>
+
+</body>
+</html>
+
